@@ -11,16 +11,16 @@ chkHPD <- function(HPD, confirm = FALSE) {
 	if (!class(HPD) == "HivePlotData") { warning("The object provided was not of class HivePlotData"); w <- TRUE }
 
 	if (!class(HPD$nodes) == "data.frame") { warning("The nodes data appear to be corrupt"); w <- TRUE }
-	if (!class(HPD$nodes$id) == "integer") { warning("nodes$id appears to be corrupt"); w <- TRUE }
+	if (!all(HPD$nodes$id %% 1 == 0)) { warning("nodes$id appears to be corrupt"); w <- TRUE }
 	if (!class(HPD$nodes$radius) == "numeric") { warning("nodes$radius appears to be corrupt"); w <- TRUE }
 	if (!class(HPD$nodes$lab) == "character") { warning("nodes$lab appears to be corrupt"); w <- TRUE }
-	if (!class(HPD$nodes$axis) == "integer") { warning("nodes$axis appears to be corrupt"); w <- TRUE }
+	if (!all(HPD$nodes$axis %% 1 == 0)) { warning("nodes$axis appears to be corrupt"); w <- TRUE }
 	if (!class(HPD$nodes$color) == "character") { warning("nodes$color appears to be corrupt"); w <- TRUE }
 	if (!class(HPD$nodes$size) == "numeric") { warning("nodes$size appears to be corrupt"); w <- TRUE }
 
 	if (!class(HPD$edges) == "data.frame") { warning("The edges data appear to be corrupt"); w <- TRUE }
-	if (!class(HPD$edges$id1) == "integer") { warning("edges$id1 appears to be corrupt"); w <- TRUE }
-	if (!class(HPD$edges$id2) == "integer") { warning("edges$id2 appears to be corrupt"); w <- TRUE }
+	if (!all(HPD$edges$id1 %% 1 == 0)) { warning("edges$id1 appears to be corrupt"); w <- TRUE }
+	if (!all(HPD$edges$id2 %% 1 == 0)) { warning("edges$id2 appears to be corrupt"); w <- TRUE }
 	if (!class(HPD$edges$weight) == "numeric") { warning("edges$weight appears to be corrupt"); w <- TRUE }
 	if (!class(HPD$edges$color) == "character") { warning("edges$color appears to be corrupt"); w <- TRUE }
 
